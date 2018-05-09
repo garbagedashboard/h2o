@@ -1,0 +1,38 @@
+# Notes on Running Spark with H2O
+
+## Spark Basic
+Always check PYSPARK_PYTHON
+
+## To Run H2O with Spark on Machines that already have Spark installed
+### Install H2O
+1. pip install requests
+1. pip install tabulate
+1. pip install scikit-learn
+1. pip install colorama
+1. pip install future
+1. pip install h2o
+### Install h2o_pysparkling
+1. sudo ./pip install h2o_pysparkling
+
+Actually this have h2o installed as well
+
+### Load SparklingWater library to pysparkling
+1. use "which spark-submit" to find the conf folder inside spark
+  append  to "spark.jars" the full path of sparkling-water-assembly_2.11-2.0.16-all.jar
+
+### Test
+1. use pyspark as " $SPARK_HOME/bin/pyspark --py-files h2o_pysparkling_2.1-2.1.8.zip " so that H2OContext is imported
+```
+import pyspark
+import h2o
+from  pysparkling import *
+
+import os
+os.environ["PYTHON_EGG_CACHE"] = "~/"
+spark = pyspark.sql.SparkSession.builder.appName('etl').getOrCreate()
+#h2o.init()
+h2o_context = H2OContext.getOrCreate(spark)
+h2o_context.stop_with_jvm()
+spark.stop()
+```
+2.  spark-submit --jars /home/daden/sparkling-water-2.0.16/assembly/build/libs/sparkling-water-assembly_2.11-2.0.16-all.jar --py-files /home/daden/sparkling-water-2.0.16/py/build/dist/h2o_pysparkling_2.0-2.0.16.zip   ~/h2ospark/testh2o.py
