@@ -1,8 +1,7 @@
 # Notes on Running Spark with H2O
 
 ## Spark Basic
-Always check PYSPARK_PYTHON
-
+Always check PYSPARK_PYTHON and Set SPARK_HOME
 ## To Run H2O with Spark on Machines that already have Spark installed
 ### Install H2O
 1. pip install requests
