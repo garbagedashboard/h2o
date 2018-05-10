@@ -36,3 +36,7 @@ h2o_context.stop_with_jvm()
 spark.stop()
 ```
 2.  spark-submit --jars /home/daden/sparkling-water-2.0.16/assembly/build/libs/sparkling-water-assembly_2.11-2.0.16-all.jar --py-files /home/daden/sparkling-water-2.0.16/py/build/dist/h2o_pysparkling_2.0-2.0.16.zip   ~/h2ospark/testh2o.py
+
+ /home/daden/h2ospark2/spark-2.2.0-bin-hadoop2.7/bin/spark-submit --jars /home/daden/h2ospark2/sparkling-water-2.2.2/assembly/build/libs/sparkling-water-assembly_2.11-2.2.2-all.jar  --files storageconfig.json ./h2o_serverload_train_uploadblob.py ./storageconfig.json
+
+spark-submit --jars /home/sshuser/sparkling-water-2.1.16/assembly/build/libs/sparkling-water-assembly_2.11-2.1.16-all.jar   --conf spark.executor.extraClassPath=/home/sshuser/sparkling-water-2.1.16/assembly/build/libs/sparkling-water-assembly_2.11-2.1.16-all.jar --conf spark.driver.extraClassPath=/home/sshuser/sparkling-water-2.1.16/assembly/build/libs/sparkling-water-assembly_2.11-2.1.16-all.jar --files storageconfig.json ./h2o_serverload_train_uploadblob.py ./storageconfig.json
